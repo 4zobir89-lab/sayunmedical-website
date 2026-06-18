@@ -84,3 +84,47 @@ body {
 }
 
 ::selection { background-color: #13B5EA; color: white; }
+
+/* Micro-interactions */
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(11, 37, 69, 0.08);
+}
+.hover-lift:active {
+  transform: translateY(0);
+}
+
+.img-zoom {
+  overflow: hidden;
+}
+.img-zoom img {
+  transition: transform 0.6s ease;
+}
+.img-zoom:hover img {
+  transform: scale(1.06);
+}
+
+/* Button press */
+.btn-press:active {
+  transform: scale(0.97);
+}
+
+/* Card border glow */
+.card-glow {
+  position: relative;
+}
+.card-glow::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: linear-gradient(135deg, rgba(19, 181, 234, 0.2), transparent);
+}
+.card-glow:hover::after {
+  opacity: 1;
+}
