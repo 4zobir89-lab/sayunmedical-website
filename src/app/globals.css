@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #0A5C7E;
+  --primary-dark: #073B52;
+  --primary-light: #1A8BB5;
+  --accent: #C8A44E;
+  --accent-light: #E8D5A3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Noto Sans Arabic", "Inter", system-ui, sans-serif;
+}
+
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.ltr {
+  direction: ltr;
+  text-align: left;
+}

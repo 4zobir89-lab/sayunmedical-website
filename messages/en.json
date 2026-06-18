@@ -1,0 +1,103 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "products": "Products",
+    "services": "Services",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact",
+    "search": "Search..."
+  },
+  "home": {
+    "hero": {
+      "title": "Your Trusted Partner in Healthcare",
+      "subtitle": "Providing high-quality medical equipment since 1998",
+      "cta": "Request a Quote"
+    },
+    "stats": {
+      "founded": "Founded",
+      "year": "1998",
+      "branches": "Branches",
+      "employees": "Employees",
+      "clients": "Clients"
+    },
+    "who_we_are": {
+      "title": "Who We",
+      "highlight": "Are",
+      "desc": "Sayun Corporation is one of the leading medical corporations in Yemen, specialized in importing and distributing high-quality medical equipment.",
+      "list1": "Caring for human health",
+      "list2": "Delivering on time",
+      "list3": "Guaranteed high quality",
+      "list4": "Building customer trust"
+    },
+    "partners": "Our Global Partners",
+    "testimonials": "What Our Clients Say",
+    "cta": "Contact us for a free consultation",
+    "cta_btn": "Contact Us Now",
+    "featured_products": "Featured Products"
+  },
+  "about": {
+    "title": "About Us",
+    "intro": "Sayun Medical was founded in 1998 in Sana'a, as one of Yemen's leading professional medical equipment corporations.",
+    "mission": "Mission",
+    "mission_desc": "Highly advanced medical technologies to make healthcare more accessible",
+    "vision": "Vision",
+    "vision_desc": "Caring for health inside and outside Yemen forever",
+    "values": "Values",
+    "values_desc": "Credibility and confidentiality are our standard to go on",
+    "timeline_title": "Our Journey",
+    "partners": "Our Partners"
+  },
+  "products": {
+    "title": "Our Products",
+    "all": "All Products",
+    "request_quote": "Request a Quote",
+    "download_catalog": "Download Catalog",
+    "specs": "Technical Specifications",
+    "related": "Related Products",
+    "search": "Search Products",
+    "categories": "Categories"
+  },
+  "services": {
+    "title": "Our Services",
+    "items": [
+      { "title": "Technical Support", "desc": "Full technical support team for all types of medical equipment" },
+      { "title": "Medical Consultation", "desc": "Expert consultation in selecting the right equipment" },
+      { "title": "Supply Orders", "desc": "Customers can choose their equipment and we deliver on time" },
+      { "title": "Customer Satisfaction", "desc": "Committed to offering distinguished services and guaranteed quality" },
+      { "title": "Our Relations", "desc": "Looking forward to building business relationships worldwide" },
+      { "title": "Specialist Team", "desc": "Highly experienced and qualified personnel" }
+    ]
+  },
+  "contact": {
+    "title": "Contact Us",
+    "form_title": "Happy to help!",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "subject": "Subject",
+    "message": "Your Message",
+    "send": "Send",
+    "success": "Your message has been sent successfully. We will contact you soon.",
+    "info_title": "Or contact us directly",
+    "address": "Al-Tahreer Street, Sana'a, Yemen",
+    "map_title": "Our Location",
+    "whatsapp": "WhatsApp"
+  },
+  "footer": {
+    "about_title": "About Sayun",
+    "quick_links": "Quick Links",
+    "products": "Our Products",
+    "contact_us": "Contact Us",
+    "copyright": "© Copyright Sayun Corporation for Medical Appliances",
+    "designed_by": "Designed by"
+  },
+  "common": {
+    "read_more": "Read More",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "not_found": "Page Not Found",
+    "back_home": "Back to Home"
+  }
+}
