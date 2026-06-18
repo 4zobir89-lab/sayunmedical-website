@@ -60,7 +60,8 @@ export default function Nav() {
             );
           })}
           <div className="h-5 w-px bg-navy-200/30 mx-2" />
-          <Link href={`/${locale === "ar" ? "en" : ""}`}
+          <Link
+            href={locale === "ar" ? `/en${pathname === "/" ? "" : pathname}` : pathname.replace(/^\/en/, "") || "/"}
             className="px-3 py-1.5 text-xs font-semibold text-navy-500 hover:text-navy-900 uppercase tracking-[0.12em] transition-colors">
             {locale === "ar" ? "EN" : "عربي"}
           </Link>
@@ -91,7 +92,9 @@ export default function Nav() {
               {t[locale][item.key]}
             </Link>
           ))}
-          <Link href={`/${locale === "ar" ? "en" : ""}`} onClick={() => setOpen(false)}
+          <Link
+            href={locale === "ar" ? `/en${pathname === "/" ? "" : pathname}` : pathname.replace(/^\/en/, "") || "/"}
+            onClick={() => setOpen(false)}
             className="mt-8 rounded-full border border-white/20 px-8 py-3 text-sm font-medium text-white/70 hover:text-white hover:border-white/40 transition-all">
             {locale === "ar" ? "English" : "العربية"}
           </Link>
