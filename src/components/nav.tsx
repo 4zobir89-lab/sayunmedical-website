@@ -1,14 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { useLocale } from "next-intl";
-import { usePathname } from "@/i18n/routing";
+import { usePathname } from "next/navigation";
+import { Link } from "@/i18n/routing";
 
 export default function Nav() {
   const locale = useLocale();
   const isRtl = locale === "ar";
-  const pathname = usePathname();
+  const fullPath = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -31,11 +31,21 @@ export default function Nav() {
     { key: "contact", href: "/contact" as const },
   ];
 
+  // Build language switch URL using the full path from next/navigation
+  const langSwitchHref = (() => {
+    if (locale === "ar") {
+      // Arabic → English: prepend /en
+      return `/en${fullPath}`;
+    } else {
+      // English → Arabic: remove /en prefix
+      const withoutEn = fullPath.replace(/^\/en/, "");
+      return withoutEn || "/";
+    }
+  })();
+
   const switchLocale = () => {
     setOpen(false);
-    const target = locale === "ar" ? "en" : "ar";
-    const prefix = target === "en" ? "/en" : "";
-    window.location.href = pathname === "/" ? prefix || "/" : `${prefix}${pathname}`;
+    window.location.href = langSwitchHref;
   };
 
   return (
@@ -58,16 +68,17 @@ export default function Nav() {
           {items.slice(0, -1).map((item) => (
             <Link key={item.key} href={item.href}
               className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
-                pathname === item.href ? "text-navy-900 bg-cyan-50" : "text-navy-700/70 hover:text-navy-900 hover:bg-cyan-50/50"
+                fullPath === item.href || fullPath === `/en${item.href}` || (item.href !== "/" && fullPath.endsWith(item.href))
+                  ? "text-navy-900 bg-cyan-50" : "text-navy-700/70 hover:text-navy-900 hover:bg-cyan-50/50"
               }`}>
               {t[locale][item.key]}
             </Link>
           ))}
           <div className="h-5 w-px bg-navy-200/30 mx-2" />
-          <Link href={locale === "ar" ? `/en${pathname}` : pathname}
-            className="px-3 py-1.5 text-xs font-semibold text-navy-500 hover:text-navy-900 uppercase tracking-[0.12em] transition-colors">
+          <button onClick={switchLocale}
+            className="px-3 py-1.5 text-xs font-semibold text-navy-500 hover:text-navy-900 uppercase tracking-[0.12em] transition-colors cursor-pointer">
             {locale === "ar" ? "EN" : "عربي"}
-          </Link>
+          </button>
         </nav>
 
         <Link href="/contact"
