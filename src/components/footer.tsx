@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { useLocale } from "next-intl";
 
 export default function Footer() {
@@ -13,11 +13,11 @@ export default function Footer() {
   };
 
   const links = [
-    { label: locale === "ar" ? "الرئيسية" : "Home", href: `/${locale === "ar" ? "" : "en"}` },
-    { label: locale === "ar" ? "من نحن" : "About", href: `/${locale === "ar" ? "" : "en"}/about` },
-    { label: locale === "ar" ? "المنتجات" : "Products", href: `/${locale === "ar" ? "" : "en"}/products` },
-    { label: locale === "ar" ? "الخدمات" : "Services", href: `/${locale === "ar" ? "" : "en"}/services` },
-    { label: locale === "ar" ? "اتصل بنا" : "Contact", href: `/${locale === "ar" ? "" : "en"}/contact` },
+    { label: locale === "ar" ? "الرئيسية" : "Home", href: "/" as const },
+    { label: locale === "ar" ? "من نحن" : "About", href: "/about" as const },
+    { label: locale === "ar" ? "المنتجات" : "Products", href: "/products" as const },
+    { label: locale === "ar" ? "الخدمات" : "Services", href: "/services" as const },
+    { label: locale === "ar" ? "اتصل بنا" : "Contact", href: "/contact" as const },
   ];
 
   const products = locale === "ar"

@@ -3,12 +3,13 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useLocale } from "next-intl";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "@/i18n/routing";
 
 export default function Nav() {
   const locale = useLocale();
   const isRtl = locale === "ar";
   const pathname = usePathname();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -24,12 +25,17 @@ export default function Nav() {
   };
 
   const items = [
-    { key: "home", href: `/${locale === "ar" ? "" : "en"}` },
-    { key: "about", href: `/${locale === "ar" ? "" : "en"}/about` },
-    { key: "products", href: `/${locale === "ar" ? "" : "en"}/products` },
-    { key: "services", href: `/${locale === "ar" ? "" : "en"}/services` },
-    { key: "contact", href: `/${locale === "ar" ? "" : "en"}/contact` },
+    { key: "home", href: "/" as const },
+    { key: "about", href: "/about" as const },
+    { key: "products", href: "/products" as const },
+    { key: "services", href: "/services" as const },
+    { key: "contact", href: "/contact" as const },
   ];
+
+  const switchLocale = () => {
+    router.replace(pathname, { locale: locale === "ar" ? "en" : "ar" });
+    setOpen(false);
+  };
 
   return (
     <header
@@ -39,7 +45,7 @@ export default function Nav() {
       dir={isRtl ? "rtl" : "ltr"}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 h-20">
-        <Link href={items[0].href} className="flex items-center gap-3 shrink-0">
+        <Link href="/" className="flex items-center gap-3 shrink-0">
           <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-navy-800 text-white font-bold text-sm">S</div>
           <div className="hidden sm:block">
             <p className="text-sm font-semibold text-navy-900 leading-tight">Sayun <span className="text-cyan-500">Medical</span></p>
@@ -48,26 +54,22 @@ export default function Nav() {
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
-          {items.slice(0, -1).map((item) => {
-            const active = pathname === item.href || (item.href.length > 1 && pathname.startsWith(item.href));
-            return (
-              <Link key={item.key} href={item.href}
-                className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
-                  active ? "text-navy-900 bg-cyan-50" : "text-navy-700/70 hover:text-navy-900 hover:bg-cyan-50/50"
-                }`}>
-                {t[locale][item.key]}
-              </Link>
-            );
-          })}
+          {items.slice(0, -1).map((item) => (
+            <Link key={item.key} href={item.href}
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+                pathname === item.href ? "text-navy-900 bg-cyan-50" : "text-navy-700/70 hover:text-navy-900 hover:bg-cyan-50/50"
+              }`}>
+              {t[locale][item.key]}
+            </Link>
+          ))}
           <div className="h-5 w-px bg-navy-200/30 mx-2" />
-          <Link
-            href={locale === "ar" ? `/en${pathname === "/" ? "" : pathname}` : pathname.replace(/^\/en/, "") || "/"}
-            className="px-3 py-1.5 text-xs font-semibold text-navy-500 hover:text-navy-900 uppercase tracking-[0.12em] transition-colors">
+          <button onClick={switchLocale}
+            className="px-3 py-1.5 text-xs font-semibold text-navy-500 hover:text-navy-900 uppercase tracking-[0.12em] transition-colors cursor-pointer">
             {locale === "ar" ? "EN" : "عربي"}
-          </Link>
+          </button>
         </nav>
 
-        <Link href={items[4].href}
+        <Link href="/contact"
           className="hidden lg:inline-flex items-center gap-2 rounded-lg bg-cyan-500 px-6 py-2.5 text-sm font-semibold text-white hover:bg-cyan-400 active:scale-[0.97] transition-all duration-200 shadow-sm">
           {t[locale].btn}
         </Link>
@@ -92,12 +94,10 @@ export default function Nav() {
               {t[locale][item.key]}
             </Link>
           ))}
-          <Link
-            href={locale === "ar" ? `/en${pathname === "/" ? "" : pathname}` : pathname.replace(/^\/en/, "") || "/"}
-            onClick={() => setOpen(false)}
-            className="mt-8 rounded-full border border-white/20 px-8 py-3 text-sm font-medium text-white/70 hover:text-white hover:border-white/40 transition-all">
+          <button onClick={switchLocale}
+            className="mt-8 rounded-full border border-white/20 px-8 py-3 text-sm font-medium text-white/70 hover:text-white hover:border-white/40 transition-all cursor-pointer">
             {locale === "ar" ? "English" : "العربية"}
-          </Link>
+          </button>
         </div>
       </div>
     </header>
