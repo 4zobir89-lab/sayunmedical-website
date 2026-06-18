@@ -3,13 +3,12 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useLocale } from "next-intl";
-import { usePathname, useRouter } from "@/i18n/routing";
+import { usePathname } from "@/i18n/routing";
 
 export default function Nav() {
   const locale = useLocale();
   const isRtl = locale === "ar";
   const pathname = usePathname();
-  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -33,8 +32,10 @@ export default function Nav() {
   ];
 
   const switchLocale = () => {
-    router.replace(pathname, { locale: locale === "ar" ? "en" : "ar" });
     setOpen(false);
+    const target = locale === "ar" ? "en" : "ar";
+    const prefix = target === "en" ? "/en" : "";
+    window.location.href = pathname === "/" ? prefix || "/" : `${prefix}${pathname}`;
   };
 
   return (
@@ -63,10 +64,10 @@ export default function Nav() {
             </Link>
           ))}
           <div className="h-5 w-px bg-navy-200/30 mx-2" />
-          <button onClick={switchLocale}
-            className="px-3 py-1.5 text-xs font-semibold text-navy-500 hover:text-navy-900 uppercase tracking-[0.12em] transition-colors cursor-pointer">
+          <Link href={locale === "ar" ? `/en${pathname}` : pathname}
+            className="px-3 py-1.5 text-xs font-semibold text-navy-500 hover:text-navy-900 uppercase tracking-[0.12em] transition-colors">
             {locale === "ar" ? "EN" : "عربي"}
-          </button>
+          </Link>
         </nav>
 
         <Link href="/contact"
