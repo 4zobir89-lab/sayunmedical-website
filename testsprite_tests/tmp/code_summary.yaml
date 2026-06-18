@@ -1,0 +1,1 @@
+prd: { name: sayunmedical-website, type: frontend, framework: nextjs, features: [home, about, products, services, contact, i18n, rtl] }

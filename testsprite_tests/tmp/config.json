@@ -1,0 +1,13 @@
+{
+  "status": "init",
+  "executionArgs": {
+    "projectName": "sayunmedical-website",
+    "projectPath": "/root/sayunmedical-website",
+    "testIds": [],
+    "additionalInstruction": "Test all pages: home (/), about (/about), products (/products), services (/services), contact (/contact) in both Arabic and English. Verify navigation works, language switcher works, all links are functional, forms render, images load, RTL support for Arabic, LTR for English.",
+    "serverMode": "production",
+    "envs": {
+      "API_KEY": "sk-user--ZqyI6Ep5o-4fNdLLJ_b5VEGu9M1lgt_cBcDsq0fgr5hQcRO81wFg2uwx17Uz20VOLHUMAtSC0p5ZDru5xh_70H3t4HuOQWqGft6EZWOg1c6m3GNybBYZgxTcuTcptG9cGc"
+    }
+  }
+}

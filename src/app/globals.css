@@ -1,81 +1,79 @@
 @import "tailwindcss";
 
 @theme {
-  --color-sayun-50: #f0f7fa;
-  --color-sayun-100: #daeef6;
-  --color-sayun-200: #b9dcee;
-  --color-sayun-300: #88c3e1;
-  --color-sayun-400: #50a3cf;
-  --color-sayun-500: #2a87ba;
-  --color-sayun-600: #1b6d9d;
-  --color-sayun-700: #0A5C7E;
-  --color-sayun-800: #0c4b68;
-  --color-sayun-900: #103f57;
-  --color-sayun-950: #0b293b;
-  --color-gold-50: #fdf8ed;
-  --color-gold-100: #f9efcc;
-  --color-gold-200: #f2dd94;
-  --color-gold-300: #e9c55a;
-  --color-gold-400: #C8A44E;
-  --color-gold-500: #bd9235;
-  --color-gold-600: #a5782a;
-  --color-gold-700: #895b24;
-  --color-gold-800: #714923;
-  --color-gold-900: #603e22;
-  --color-gold-950: #382011;
-  --font-sans: var(--font-geist-sans);
-  --font-arabic: "Noto Kufi Arabic", sans-serif;
+  /* PRD v1.0 Color Palette */
+  --color-navy-900: #0B2545;
+  --color-navy-800: #13315C;
+  --color-navy-700: #1B3B6F;
+  --color-navy-600: #23498A;
+  --color-cyan-500: #13B5EA;
+  --color-cyan-400: #3EC7F0;
+  --color-cyan-300: #7AD7F4;
+  --color-cyan-200: #B0E7F9;
+  --color-cyan-50: #E8F7FD;
+  --color-gray-50: #F8FAFC;
+  --color-gray-100: #F1F5F9;
+  --color-gray-200: #E2E8F0;
+  --color-gray-300: #CBD5E1;
+  --color-gray-400: #94A3B8;
+  --color-gray-500: #64748B;
+  --color-gray-600: #475569;
+  --color-gray-800: #1E293B;
+  --color-gray-900: #0F172A;
+  --color-white: #FFFFFF;
+  --color-success: #10B981;
+  --color-warn: #F59E0B;
+  --color-danger: #EF4444;
+
+  /* PRD Typography Scale */
+  --text-display: 48px;
+  --text-h1: 36px;
+  --text-h2: 28px;
+  --text-h3: 22px;
+  --text-h4: 18px;
+  --text-body-lg: 18px;
+  --text-body: 16px;
+  --text-body-sm: 14px;
+  --text-caption: 13px;
+  --text-overline: 12px;
+
+  /* PRD Spacing Scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  --font-sans: "Inter", "Noto Sans Arabic", system-ui, sans-serif;
+  --font-display: "Playfair Display", "IBM Plex Sans Arabic", serif;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.rtl {
-  direction: rtl;
-  text-align: right;
+/* RTL support */
+.rtl { direction: rtl; text-align: right; }
+.ltr { direction: ltr; text-align: left; }
+
+/* Motion: PRD cubic-bezier(0.2, 0, 0, 1) */
+* { transition-duration: 150ms; }
+
+/* Focus-visible rings */
+*:focus-visible {
+  outline: 2px solid #13B5EA;
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
-.ltr {
-  direction: ltr;
-  text-align: left;
-}
-
-::selection {
-  background-color: #C8A44E;
-  color: white;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
-}
-
-@keyframes pulse-soft {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-shimmer {
-  background: linear-gradient(90deg, transparent 0%, rgba(200,164,78,0.1) 50%, transparent 100%);
-  background-size: 200% 100%;
-  animation: shimmer 3s ease-in-out infinite;
-}
-
+/* WCAG prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -84,3 +82,5 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+::selection { background-color: #13B5EA; color: white; }
