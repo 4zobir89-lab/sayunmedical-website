@@ -7,6 +7,7 @@ import Link from "next/link";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import { getProduct, getProductsByCategory, categories } from "@/lib/products";
+import { useScrollFadeIn, useStaggerFadeIn } from "@/lib/animations";
 
 export default function ProductDetailClient({ slug }: { slug: string }) {
   const locale = useLocale() as "ar" | "en";
@@ -14,6 +15,9 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
   const product = getProduct(slug);
   const [selectedImg, setSelectedImg] = useState(0);
   const L = locale === "ar" ? "" : "en";
+
+  const detailRef = useScrollFadeIn<HTMLDivElement>();
+  const relatedRef = useStaggerFadeIn<HTMLDivElement>({ stagger: 0.06 });
 
   if (!product) return notFound();
 
@@ -41,11 +45,11 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
           </div>
         </div>
 
-        <section className="py-16">
+        <section ref={detailRef} className="py-16">
           <div className="mx-auto max-w-7xl px-6">
             <div className="grid lg:grid-cols-2 gap-12">
               <div>
-                <div className="aspect-[4/3] rounded-xl bg-gray-100 overflow-hidden mb-4 img-zoom">
+                <div className="aspect-[4/3] rounded-xl bg-gray-100 overflow-hidden mb-4">
                   <img src={product.images[selectedImg] || product.images[0]} alt={name}
                     className="w-full h-full object-cover"
                     onError={(e) => { (e.target as HTMLImageElement).src = "/images/home_slider/1.jpg"; }} />
@@ -113,12 +117,12 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
           <section className="py-20 bg-gray-50/80">
             <div className="mx-auto max-w-7xl px-6">
               <h2 className="text-2xl font-bold text-navy-900 mb-10">{locale === "ar" ? "منتجات ذات صلة" : "Related Products"}</h2>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              <div ref={relatedRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 {related.map((rp) => {
                   const rpName = locale === "ar" ? rp.nameAr : rp.nameEn;
                   return (
                     <Link key={rp.slug} href={`/${L}/products/${rp.slug}`}
-                      className="group rounded-lg bg-white p-4 border border-navy-200/20 hover:border-cyan-500/30 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 img-zoom">
+                      className="group rounded-lg bg-white p-4 border border-navy-200/20 hover:border-cyan-500/30 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5">
                       <div className="aspect-[16/9] rounded-md bg-gray-100 overflow-hidden mb-4">
                         <img src={rp.images[0]} alt={rpName} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                           onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />

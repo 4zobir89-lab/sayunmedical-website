@@ -57,7 +57,7 @@ export default function ServicesPage() {
             <div ref={respRef} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {responsibilities.map((r: string, i: number) => (
                 <div key={r} className="rounded-lg bg-white p-6 border border-navy-200/20 text-center hover:shadow-md hover:-translate-y-1 transition-all duration-200">
-                  <span className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-cyan-50 text-cyan-600 font-bold text-sm mb-4 group-hover:bg-cyan-500 group-hover:text-white transition-all">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-cyan-50 text-cyan-600 font-bold text-sm mb-4">{String(i + 1).padStart(2, "0")}</span>
                   <p className="text-sm text-navy-600/60 leading-relaxed">{r}</p>
                 </div>
               ))}

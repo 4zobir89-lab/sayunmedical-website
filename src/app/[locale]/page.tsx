@@ -90,7 +90,6 @@ export default function HomePage() {
       <main>
         <Hero locale={locale} t={t} L={L} />
 
-        {/* STATS BAR */}
         <section className="relative z-20 -mt-10">
           <div className="mx-auto max-w-5xl px-6">
             <div className="double-bezel shadow-xl shadow-navy-900/5">
@@ -105,7 +104,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* WHO WE ARE */}
         <section ref={whoRef} className="py-28 md:py-36">
           <div className="mx-auto max-w-7xl px-6">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -135,7 +133,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* PRODUCTS */}
         <section className="py-28 md:py-36 bg-gray-50/80">
           <div className="mx-auto max-w-7xl px-6">
             <div className="text-center max-w-xl mx-auto mb-14">
@@ -174,7 +171,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* SERVICES */}
         <section className="py-28 md:py-36">
           <div className="mx-auto max-w-7xl px-6">
             <div className="text-center max-w-xl mx-auto mb-14">
@@ -199,7 +195,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* TESTIMONIALS */}
         <section className="py-28 md:py-36 bg-gray-50/80">
           <div className="mx-auto max-w-7xl px-6">
             <div className="text-center max-w-xl mx-auto mb-14">
@@ -232,7 +227,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* PARTNERS */}
         <section className="py-20 bg-white">
           <div className="mx-auto max-w-7xl px-6 text-center">
             <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-navy-400 mb-10">{t.partnersTitle}</p>
@@ -242,7 +236,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* CTA */}
         <section ref={ctaRef} className="relative py-32 md:py-40 overflow-hidden bg-navy-900">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-cyan-500/5 blur-[150px]" />
           <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />

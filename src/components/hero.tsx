@@ -37,7 +37,7 @@ export default function Hero({ locale, t, L }: Props) {
       <div className="hero-orb" style={{ bottom: "-20%", left: "-10%", width: "500px", height: "500px", background: "radial-gradient(circle, rgba(19,181,234,0.05) 0%, transparent 70%)" }} />
       <div className="hero-grid" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 pt-32 pb-20 w-full">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 pt-28 md:pt-24 pb-20 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className={locale === "ar" ? "order-2 lg:order-1" : ""}>
             <div className="hero-badge inline-flex items-center gap-2.5 rounded-full border border-cyan-500/20 bg-cyan-500/10 px-5 py-2 text-xs font-medium text-cyan-400 mb-6 backdrop-blur-sm">

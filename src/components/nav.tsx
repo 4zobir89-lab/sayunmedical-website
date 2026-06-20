@@ -60,14 +60,14 @@ export default function Nav() {
         }`}
         dir={isRtl ? "rtl" : "ltr"}
       >
-        <div className={`mx-auto transition-all duration-500 ${
-          scrolled ? "max-w-7xl" : "max-w-7xl"
-        } px-4`}>
-          <div className={`flex items-center justify-between transition-all duration-500 ${
-            scrolled
-              ? "glass-nav h-14 rounded-2xl px-4 shadow-lg shadow-black/5"
-              : "h-20 px-0"
-          }`}>
+        <div className="mx-auto max-w-7xl px-4">
+          <div
+            className={`flex items-center justify-between transition-all duration-500 ${
+              scrolled
+                ? "glass-nav h-14 rounded-full px-5 shadow-lg shadow-black/5 mx-auto max-w-5xl"
+                : "h-20 px-0"
+            }`}
+          >
             <Link href="/" className="flex items-center gap-3 shrink-0 group">
               <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-navy-900 text-white font-bold text-sm group-hover:bg-cyan-500 transition-all duration-300">
                 S
@@ -101,15 +101,22 @@ export default function Nav() {
                 scrolled ? "bg-navy-200/30" : "bg-white/15"
               }`} />
               <button onClick={switchLocale}
-                className={`px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] transition-colors cursor-pointer ${
-                  scrolled ? "text-navy-500 hover:text-navy-900" : "text-white/50 hover:text-white"
+                className={`flex items-center gap-2 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] transition-all duration-300 cursor-pointer rounded-lg ${
+                  scrolled
+                    ? "text-navy-500 hover:text-navy-900 hover:bg-navy-50"
+                    : "text-white/50 hover:text-white hover:bg-white/10"
                 }`}>
-                {locale === "ar" ? "EN" : "عربي"}
+                <span className={`inline-flex items-center justify-center w-5 h-5 rounded-full text-[10px] font-bold ${
+                  scrolled ? "bg-navy-100 text-navy-700" : "bg-white/10 text-white/70"
+                }`}>
+                  {locale === "ar" ? "EN" : "AR"}
+                </span>
+                {locale === "ar" ? "English" : "العربية"}
               </button>
             </nav>
 
             <Link href="/contact"
-              className={`hidden lg:inline-flex items-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition-all duration-300 btn-press ${
+              className={`hidden lg:inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-semibold transition-all duration-300 btn-press ${
                 scrolled
                   ? "bg-cyan-500 text-white hover:bg-cyan-400 shadow-sm"
                   : "bg-white/10 text-white hover:bg-white/20 border border-white/10"
@@ -151,10 +158,10 @@ export default function Nav() {
         <div className="relative z-10 flex h-full flex-col items-center justify-center gap-8 px-6">
           {items.map((item, i) => (
             <Link key={item.key} href={item.href} onClick={() => setOpen(false)}
-              className={`text-4xl md:text-5xl font-light text-white/70 hover:text-white transition-all duration-500 hover:scale-105 ${
+              className={`text-4xl md:text-5xl font-light text-white/70 hover:text-white transition-all duration-500 ${
                 open ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
               }`}
-              style={{ transitionDelay: `${i * 60}ms` }}>
+              style={{ transitionDelay: `${i * 80}ms`, transitionTimingFunction: "cubic-bezier(0.32,0.72,0,1)" }}>
               {t[locale][item.key]}
             </Link>
           ))}
@@ -162,7 +169,7 @@ export default function Nav() {
             className={`mt-4 rounded-full border border-white/20 px-8 py-3 text-sm font-medium text-white/70 hover:text-white hover:border-white/40 transition-all duration-500 ${
               open ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
             }`}
-            style={{ transitionDelay: `${items.length * 60}ms` }}>
+            style={{ transitionDelay: `${items.length * 80}ms`, transitionTimingFunction: "cubic-bezier(0.32,0.72,0,1)" }}>
             {locale === "ar" ? "English" : "العربية"}
           </button>
         </div>
