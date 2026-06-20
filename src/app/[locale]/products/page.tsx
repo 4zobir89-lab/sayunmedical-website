@@ -6,7 +6,7 @@ import { useLocale } from "next-intl";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import { categories, products } from "@/lib/products";
-import { useStaggerReveal, useScrollReveal } from "@/lib/animations";
+import { useStaggerFadeIn, useScrollFadeIn } from "@/lib/animations";
 
 export default function ProductsPage() {
   const locale = useLocale() as "ar" | "en";
@@ -15,8 +15,8 @@ export default function ProductsPage() {
   const [search, setSearch] = useState("");
   const L = locale === "ar" ? "" : "en";
 
-  const gridRef = useStaggerReveal<HTMLDivElement>({ stagger: 0.06 });
-  const ctaRef = useScrollReveal<HTMLDivElement>();
+  const gridRef = useStaggerFadeIn<HTMLDivElement>({ stagger: 0.06 });
+  const ctaRef = useScrollFadeIn<HTMLDivElement>();
 
   const filtered = products.filter((p) => {
     const name = locale === "ar" ? p.nameAr : p.nameEn;

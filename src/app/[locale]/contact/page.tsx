@@ -5,7 +5,7 @@ import { useLocale } from "next-intl";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import { dictionary } from "@/lib/use-locale";
-import { useScrollReveal, useStaggerReveal } from "@/lib/animations";
+import { useScrollFadeIn, useStaggerFadeIn } from "@/lib/animations";
 
 export default function ContactPage() {
   const locale = useLocale() as "ar" | "en";
@@ -14,8 +14,8 @@ export default function ContactPage() {
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
 
-  const formRef = useScrollReveal<HTMLDivElement>();
-  const infoRef = useStaggerReveal<HTMLDivElement>({ stagger: 0.1 });
+  const formRef = useScrollFadeIn<HTMLDivElement>();
+  const infoRef = useStaggerFadeIn<HTMLDivElement>({ stagger: 0.1 });
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

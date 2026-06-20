@@ -4,15 +4,15 @@ import { useLocale } from "next-intl";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import { dictionary } from "@/lib/use-locale";
-import { useScrollReveal, useStaggerReveal } from "@/lib/animations";
+import { useScrollFadeIn, useStaggerFadeIn } from "@/lib/animations";
 
 export default function AboutPage() {
   const locale = useLocale() as "ar" | "en";
   const t = dictionary[locale];
 
-  const storyRef = useScrollReveal<HTMLDivElement>();
-  const cardsRef = useStaggerReveal<HTMLDivElement>();
-  const timelineRef = useStaggerReveal<HTMLDivElement>({ stagger: 0.15 });
+  const storyRef = useScrollFadeIn<HTMLDivElement>();
+  const cardsRef = useStaggerFadeIn<HTMLDivElement>();
+  const timelineRef = useStaggerFadeIn<HTMLDivElement>({ stagger: 0.15 });
 
   return (
     <div className="flex min-h-screen flex-col bg-white" dir={locale === "ar" ? "rtl" : "ltr"}>

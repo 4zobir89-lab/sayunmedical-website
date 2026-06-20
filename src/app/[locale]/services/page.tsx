@@ -5,7 +5,7 @@ import { useLocale } from "next-intl";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import { dictionary } from "@/lib/use-locale";
-import { useScrollReveal, useStaggerReveal } from "@/lib/animations";
+import { useScrollFadeIn, useStaggerFadeIn } from "@/lib/animations";
 
 export default function ServicesPage() {
   const locale = useLocale() as "ar" | "en";
@@ -16,9 +16,9 @@ export default function ServicesPage() {
     ? ["الاعتناء بالصحة من خلال توفير منتجات مناسبة", "غرس المصداقية والثقة في عملائنا", "توفير منتجات عالية الجودة لسد احتياجات السوق", "خدمة العملاء وتلبية احتياجاتهم في الوقت المحدد"]
     : ["Caring for health by providing suitable products", "Building credibility and trust with our customers", "Providing high-quality products to meet market needs", "Serving customers and meeting their needs on time"];
 
-  const svcRef = useStaggerReveal<HTMLDivElement>();
-  const respRef = useStaggerReveal<HTMLDivElement>();
-  const ctaRef = useScrollReveal<HTMLDivElement>();
+  const svcRef = useStaggerFadeIn<HTMLDivElement>();
+  const respRef = useStaggerFadeIn<HTMLDivElement>();
+  const ctaRef = useScrollFadeIn<HTMLDivElement>();
 
   return (
     <div className="flex min-h-screen flex-col bg-white" dir={locale === "ar" ? "rtl" : "ltr"}>
