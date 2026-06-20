@@ -31,16 +31,10 @@ export default function Nav() {
     { key: "contact", href: "/contact" as const },
   ];
 
-  // Build language switch URL using the full path from next/navigation
   const langSwitchHref = (() => {
-    if (locale === "ar") {
-      // Arabic → English: prepend /en
-      return `/en${fullPath}`;
-    } else {
-      // English → Arabic: remove /en prefix
-      const withoutEn = fullPath.replace(/^\/en/, "");
-      return withoutEn || "/";
-    }
+    if (locale === "ar") return `/en${fullPath}`;
+    const withoutEn = fullPath.replace(/^\/en/, "");
+    return withoutEn || "/";
   })();
 
   const switchLocale = () => {
@@ -48,16 +42,21 @@ export default function Nav() {
     window.location.href = langSwitchHref;
   };
 
+  const isActive = (href: string) => {
+    if (href === "/") return fullPath === "/" || fullPath === "/en";
+    return fullPath.endsWith(href) || fullPath === `/en${href}`;
+  };
+
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-200 ${
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         scrolled ? "bg-white/95 backdrop-blur-md shadow-[0_1px_0_rgba(0,0,0,0.06)]" : "bg-transparent"
       }`}
       dir={isRtl ? "rtl" : "ltr"}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 h-20">
-        <Link href="/" className="flex items-center gap-3 shrink-0">
-          <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-navy-800 text-white font-bold text-sm">S</div>
+        <Link href="/" className="flex items-center gap-3 shrink-0 group">
+          <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-navy-800 text-white font-bold text-sm group-hover:bg-cyan-500 transition-colors duration-200">S</div>
           <div className="hidden sm:block">
             <p className="text-sm font-semibold text-navy-900 leading-tight">Sayun <span className="text-cyan-500">Medical</span></p>
             <p className="text-[10px] text-navy-600/50 tracking-[0.12em] uppercase">Corporation</p>
@@ -68,7 +67,7 @@ export default function Nav() {
           {items.slice(0, -1).map((item) => (
             <Link key={item.key} href={item.href}
               className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
-                fullPath === item.href || fullPath === `/en${item.href}` || (item.href !== "/" && fullPath.endsWith(item.href))
+                isActive(item.href)
                   ? "text-navy-900 bg-cyan-50" : "text-navy-700/70 hover:text-navy-900 hover:bg-cyan-50/50"
               }`}>
               {t[locale][item.key]}
@@ -82,21 +81,21 @@ export default function Nav() {
         </nav>
 
         <Link href="/contact"
-          className="hidden lg:inline-flex items-center gap-2 rounded-lg bg-cyan-500 px-6 py-2.5 text-sm font-semibold text-white hover:bg-cyan-400 active:scale-[0.97] transition-all duration-200 shadow-sm">
+          className="hidden lg:inline-flex items-center gap-2 rounded-lg bg-cyan-500 px-6 py-2.5 text-sm font-semibold text-white hover:bg-cyan-400 btn-press transition-all duration-200 shadow-sm">
           {t[locale].btn}
         </Link>
 
         <button onClick={() => setOpen(!open)}
           className="lg:hidden relative z-50 flex h-10 w-10 items-center justify-center rounded-lg bg-white/80 backdrop-blur-sm border border-navy-200/30">
           <div className="flex flex-col gap-1.5">
-            <span className={`block h-0.5 w-5 bg-navy-800 rounded-full transition-all duration-200 ${open ? "rotate-45 translate-y-[5px]" : ""}`} />
-            <span className={`block h-0.5 w-5 bg-navy-800 rounded-full transition-all duration-200 ${open ? "opacity-0" : ""}`} />
-            <span className={`block h-0.5 w-5 bg-navy-800 rounded-full transition-all duration-200 ${open ? "-rotate-45 -translate-y-[5px]" : ""}`} />
+            <span className={`block h-0.5 w-5 bg-navy-800 rounded-full transition-all duration-300 ${open ? "rotate-45 translate-y-[5px]" : ""}`} />
+            <span className={`block h-0.5 w-5 bg-navy-800 rounded-full transition-all duration-300 ${open ? "opacity-0" : ""}`} />
+            <span className={`block h-0.5 w-5 bg-navy-800 rounded-full transition-all duration-300 ${open ? "-rotate-45 -translate-y-[5px]" : ""}`} />
           </div>
         </button>
       </div>
 
-      <div className={`fixed inset-0 z-40 bg-navy-900/98 backdrop-blur-2xl transition-all duration-200 ${
+      <div className={`fixed inset-0 z-40 bg-navy-900/98 backdrop-blur-2xl transition-all duration-300 ${
         open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
         <div className="flex h-full flex-col items-center justify-center gap-6">
           {items.map((item, i) => (
