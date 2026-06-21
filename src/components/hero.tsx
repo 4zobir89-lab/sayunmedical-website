@@ -23,6 +23,8 @@ export default function Hero({ locale, t, L }: Props) {
     return () => clearInterval(timer);
   }, [nextSlide]);
 
+  const isRtl = locale === "ar";
+
   return (
     <section ref={ref} className="relative min-h-[100dvh] flex items-center overflow-hidden hero-gradient">
       {slides.map((slide, i) => (
@@ -33,15 +35,15 @@ export default function Hero({ locale, t, L }: Props) {
       ))}
       <div className="hero-overlay" />
 
-      <div className="hero-orb" style={{ top: "-10%", right: "-5%", width: "600px", height: "600px", background: "radial-gradient(circle, rgba(19,181,234,0.08) 0%, transparent 70%)" }} />
-      <div className="hero-orb" style={{ bottom: "-20%", left: "-10%", width: "500px", height: "500px", background: "radial-gradient(circle, rgba(19,181,234,0.05) 0%, transparent 70%)" }} />
+      <div className="hero-orb" style={{ top: "-10%", right: "-5%", width: "600px", height: "600px", background: "radial-gradient(circle, rgba(11,110,79,0.12) 0%, transparent 70%)" }} />
+      <div className="hero-orb" style={{ bottom: "-20%", left: "-10%", width: "500px", height: "500px", background: "radial-gradient(circle, rgba(11,110,79,0.08) 0%, transparent 70%)" }} />
       <div className="hero-grid" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 pt-28 md:pt-24 pb-20 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className={locale === "ar" ? "order-2 lg:order-1" : ""}>
-            <div className="hero-badge inline-flex items-center gap-2.5 rounded-full border border-cyan-500/20 bg-cyan-500/10 px-5 py-2 text-xs font-medium text-cyan-400 mb-6 backdrop-blur-sm">
-              <span className="flex h-1.5 w-1.5 rounded-full bg-cyan-500" />
+          <div className={isRtl ? "order-2 lg:order-1" : ""}>
+            <div className="inline-flex items-center gap-2.5 rounded-full border border-primary/20 bg-primary/10 px-5 py-2 text-xs font-medium text-primary-light mb-6 backdrop-blur-sm">
+              <span className="flex h-1.5 w-1.5 rounded-full bg-primary-light" />
               {t.heroBadge}
             </div>
 
@@ -59,11 +61,11 @@ export default function Hero({ locale, t, L }: Props) {
 
             <div className="hero-cta flex flex-wrap gap-4">
               <Link href={`/${L}/contact`}
-                className="group inline-flex items-center gap-3 rounded-full bg-cyan-500 px-8 py-3.5 text-sm font-semibold text-white hover:bg-cyan-400 btn-press shadow-xl shadow-cyan-500/20">
+                className="group inline-flex items-center gap-3 rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-white hover:bg-primary-hover btn-press shadow-xl shadow-primary/30">
                 {t.heroCta}
                 <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/15 transition-transform group-hover:translate-x-1">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <path d={locale === "ar" ? "M19 12H5M12 19l-7-7 7-7" : "M5 12h14M12 5l7 7-7 7"} />
+                    <path d={isRtl ? "M19 12H5M12 19l-7-7 7-7" : "M5 12h14M12 5l7 7-7 7"} />
                   </svg>
                 </span>
               </Link>
@@ -76,16 +78,16 @@ export default function Hero({ locale, t, L }: Props) {
             <div className="hero-stats-row flex items-center gap-6 mt-10 pt-8 border-t border-white/5">
               <div className="flex -space-x-2">
                 {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="w-9 h-9 rounded-full border-2 border-navy-900 bg-cyan-500/15 flex items-center justify-center">
-                    <span className="text-[9px] font-bold text-cyan-400">+{i}</span>
+                  <div key={i} className="w-9 h-9 rounded-full border-2 border-navy-900 bg-primary-light/15 flex items-center justify-center">
+                    <span className="text-[9px] font-bold text-primary-light">+{i}</span>
                   </div>
                 ))}
               </div>
-              <p className="text-xs text-white/25">{locale === "ar" ? "موثوق من مئات العملاء" : "Trusted by hundreds of clients"}</p>
+              <p className="text-xs text-white/25">{isRtl ? "موثوق من مئات العملاء" : "Trusted by hundreds of clients"}</p>
             </div>
           </div>
 
-          <div className={`hero-image-wrap ${locale === "ar" ? "order-1 lg:order-2" : ""} relative`}>
+          <div className={`hero-image-wrap ${isRtl ? "order-1 lg:order-2" : ""} relative`}>
             <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/20">
               <div className="double-bezel">
                 <div className="double-bezel-inner overflow-hidden">
@@ -97,14 +99,14 @@ export default function Hero({ locale, t, L }: Props) {
               </div>
             </div>
 
-            <div className="absolute -bottom-2 -right-2 w-full h-full rounded-2xl border border-cyan-500/10 -z-10 hidden lg:block" />
+            <div className="absolute -bottom-2 -right-2 w-full h-full rounded-2xl border border-primary-light/10 -z-10 hidden lg:block" />
             <div className="absolute -top-2 -left-2 w-full h-full rounded-2xl border border-white/5 -z-10 hidden lg:block" />
 
             <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2.5 z-10">
               {slides.map((_, i) => (
                 <button key={i} onClick={() => setSlideIdx(i)}
                   className={`rounded-full transition-all duration-500 ${
-                    i === slideIdx ? "w-8 h-2 bg-cyan-500" : "w-2 h-2 bg-white/30 hover:bg-white/50"
+                    i === slideIdx ? "w-8 h-2 bg-primary-light" : "w-2 h-2 bg-white/30 hover:bg-white/50"
                   }`} />
               ))}
             </div>

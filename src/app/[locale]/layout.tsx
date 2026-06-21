@@ -1,10 +1,25 @@
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { Inter, Tajawal } from "next/font/google";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 
 const locales = ["ar", "en"];
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
+
+const tajawal = Tajawal({
+  subsets: ["arabic"],
+  variable: "--font-tajawal",
+  display: "swap",
+  weight: ["300", "400", "500", "700", "800"],
+});
 
 type Props = {
   children: React.ReactNode;
@@ -35,18 +50,11 @@ export default async function LocaleLayout({ children, params }: Props) {
   const isRtl = locale === "ar";
 
   return (
-    <html lang={locale} dir={isRtl ? "rtl" : "ltr"}>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;600;800&family=Noto+Kufi+Arabic:wght@500;700;800&family=Noto+Sans+Arabic:wght@300;400;500;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang={locale} dir={isRtl ? "rtl" : "ltr"} className={`${inter.variable} ${tajawal.variable}`}>
       <body style={{ margin: 0, fontFamily: "inherit" }}>
         <NextIntlClientProvider messages={messages}>
-          <div className={`${isRtl ? "rtl" : "ltr"} min-h-screen bg-white text-[#334155]`}>
+          <div className={`${isRtl ? "rtl" : "ltr"} min-h-screen`}
+            style={{ background: "var(--color-bg)", color: "var(--color-text)" }}>
             {children}
           </div>
         </NextIntlClientProvider>

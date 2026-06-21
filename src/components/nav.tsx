@@ -69,14 +69,14 @@ export default function Nav() {
             }`}
           >
             <Link href="/" className="flex items-center gap-3 shrink-0 group">
-              <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-navy-900 text-white font-bold text-sm group-hover:bg-cyan-500 transition-all duration-300">
+              <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-primary text-white font-bold text-sm group-hover:bg-primary-hover transition-all duration-300">
                 S
               </div>
               <div className="hidden sm:block">
                 <p className={`text-sm font-semibold leading-tight transition-colors duration-300 ${
                   scrolled ? "text-navy-900" : "text-white"
                 }`}>
-                  Sayun <span className="text-cyan-500">Medical</span>
+                  Sayun <span className="text-primary-light">Medical</span>
                 </p>
                 <p className={`text-[10px] tracking-[0.12em] uppercase transition-colors duration-300 ${
                   scrolled ? "text-navy-600/50" : "text-white/40"
@@ -91,8 +91,8 @@ export default function Nav() {
                 <Link key={item.key} href={item.href}
                   className={`px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 ${
                     isActive(item.href)
-                      ? scrolled ? "text-navy-900 bg-cyan-50" : "text-white bg-white/10"
-                      : scrolled ? "text-navy-700/70 hover:text-navy-900 hover:bg-cyan-50/50" : "text-white/60 hover:text-white hover:bg-white/10"
+                      ? scrolled ? "text-primary bg-primary-lightest" : "text-white bg-white/10"
+                      : scrolled ? "text-navy-700/70 hover:text-primary hover:bg-primary-lightest/50" : "text-white/60 hover:text-white hover:bg-white/10"
                   }`}>
                   {t[locale][item.key]}
                 </Link>
@@ -103,11 +103,11 @@ export default function Nav() {
               <button onClick={switchLocale}
                 className={`flex items-center gap-2 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] transition-all duration-300 cursor-pointer rounded-lg ${
                   scrolled
-                    ? "text-navy-500 hover:text-navy-900 hover:bg-navy-50"
+                    ? "text-navy-400 hover:text-primary hover:bg-primary-lightest"
                     : "text-white/50 hover:text-white hover:bg-white/10"
                 }`}>
                 <span className={`inline-flex items-center justify-center w-5 h-5 rounded-full text-[10px] font-bold ${
-                  scrolled ? "bg-navy-100 text-navy-700" : "bg-white/10 text-white/70"
+                  scrolled ? "bg-primary-lightest text-primary" : "bg-white/10 text-white/70"
                 }`}>
                   {locale === "ar" ? "EN" : "AR"}
                 </span>
@@ -118,12 +118,12 @@ export default function Nav() {
             <Link href="/contact"
               className={`hidden lg:inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-semibold transition-all duration-300 btn-press ${
                 scrolled
-                  ? "bg-cyan-500 text-white hover:bg-cyan-400 shadow-sm"
+                  ? "bg-primary text-white hover:bg-primary-hover shadow-sm"
                   : "bg-white/10 text-white hover:bg-white/20 border border-white/10"
               }`}>
               {t[locale].btn}
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d={locale === "ar" ? "M19 12H5M12 19l-7-7 7-7" : "M5 12h14M12 5l7 7-7 7"} />
+                <path d={isRtl ? "M19 12H5M12 19l-7-7 7-7" : "M5 12h14M12 5l7 7-7 7"} />
               </svg>
             </Link>
 
@@ -161,7 +161,7 @@ export default function Nav() {
               className={`text-4xl md:text-5xl font-light text-white/70 hover:text-white transition-all duration-500 ${
                 open ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
               }`}
-              style={{ transitionDelay: `${i * 80}ms`, transitionTimingFunction: "cubic-bezier(0.32,0.72,0,1)" }}>
+              style={{ transitionDelay: `${i * 80}ms`, transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)" }}>
               {t[locale][item.key]}
             </Link>
           ))}
@@ -169,7 +169,7 @@ export default function Nav() {
             className={`mt-4 rounded-full border border-white/20 px-8 py-3 text-sm font-medium text-white/70 hover:text-white hover:border-white/40 transition-all duration-500 ${
               open ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
             }`}
-            style={{ transitionDelay: `${items.length * 80}ms`, transitionTimingFunction: "cubic-bezier(0.32,0.72,0,1)" }}>
+            style={{ transitionDelay: `${items.length * 80}ms`, transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)" }}>
             {locale === "ar" ? "English" : "العربية"}
           </button>
         </div>

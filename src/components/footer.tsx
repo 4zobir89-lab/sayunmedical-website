@@ -21,14 +21,14 @@ export default function Footer() {
 
   return (
     <footer className="relative bg-navy-900 text-white/50" dir={isRtl ? "rtl" : "ltr"}>
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary-light/20 to-transparent" />
       <div className="mx-auto max-w-7xl px-6 pt-20 pb-0">
         <div className="grid gap-12 lg:grid-cols-4">
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
-              <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-cyan-500/10 text-cyan-500 font-bold text-base">S</div>
+              <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-primary-light/10 text-primary-light font-bold text-base">S</div>
               <div>
-                <p className="text-base font-semibold text-white">Sayun <span className="text-cyan-500">Medical</span></p>
+                <p className="text-base font-semibold text-white">Sayun <span className="text-primary-light">Medical</span></p>
                 <p className="text-[10px] text-white/30 tracking-[0.12em] uppercase">Corporation</p>
               </div>
             </div>
@@ -45,24 +45,24 @@ export default function Footer() {
                 </svg>
               </a>
               <a href="mailto:info@sayunmedical.com" target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-white/5 hover:bg-cyan-500/15 flex items-center justify-center transition-all duration-300 group">
+                className="w-10 h-10 rounded-xl bg-white/5 hover:bg-accent/15 flex items-center justify-center transition-all duration-300 group">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"
-                  className="text-white/30 group-hover:text-cyan-500 transition-colors duration-300">
+                  className="text-white/30 group-hover:text-accent transition-colors duration-300">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                   <polyline points="22,6 12,13 2,6" />
                 </svg>
               </a>
               <a href="tel:00967777033002"
-                className="w-10 h-10 rounded-xl bg-white/5 hover:bg-cyan-500/15 flex items-center justify-center transition-all duration-300 group">
+                className="w-10 h-10 rounded-xl bg-white/5 hover:bg-accent/15 flex items-center justify-center transition-all duration-300 group">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"
-                  className="text-white/30 group-hover:text-cyan-500 transition-colors duration-300">
+                  className="text-white/30 group-hover:text-accent transition-colors duration-300">
                   <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
                 </svg>
               </a>
               <a href="https://facebook.com/sayunmedical" target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-white/5 hover:bg-blue-500/15 flex items-center justify-center transition-all duration-300 group">
+                className="w-10 h-10 rounded-xl bg-white/5 hover:bg-accent/15 flex items-center justify-center transition-all duration-300 group">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
-                  className="text-white/30 group-hover:text-blue-500 transition-colors duration-300">
+                  className="text-white/30 group-hover:text-accent transition-colors duration-300">
                   <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
                 </svg>
               </a>
@@ -76,7 +76,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {links.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="text-sm text-white/30 hover:text-cyan-500 transition-colors duration-300">
+                  <Link href={link.href} className="text-sm text-white/30 hover:text-primary-light transition-colors duration-300">
                     {link.label}
                   </Link>
                 </li>
@@ -101,16 +101,16 @@ export default function Footer() {
             </h4>
             <ul className="space-y-4 text-sm text-white/30">
               <li className="flex items-start gap-3">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="shrink-0 mt-0.5 text-cyan-500/50"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="shrink-0 mt-0.5 text-primary-light/50"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                 {locale === "ar" ? "شارع التحرير، صنعاء، اليمن" : "Al-Tahreer St, Sana'a, Yemen"}
               </li>
               <li className="flex items-center gap-3">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="shrink-0 text-cyan-500/50"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-                <a href="tel:00967777033002" className="hover:text-cyan-500 transition-colors">00967-777-033-002</a>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="shrink-0 text-primary-light/50"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                <a href="tel:00967777033002" className="hover:text-primary-light transition-colors">00967-777-033-002</a>
               </li>
               <li className="flex items-center gap-3">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="shrink-0 text-cyan-500/50"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                <a href="mailto:info@sayunmedical.com" className="hover:text-cyan-500 transition-colors">info@sayunmedical.com</a>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="shrink-0 text-primary-light/50"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <a href="mailto:info@sayunmedical.com" className="hover:text-primary-light transition-colors">info@sayunmedical.com</a>
               </li>
             </ul>
           </div>
@@ -118,7 +118,7 @@ export default function Footer() {
 
         <div className="mt-16 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/15 pb-10">
           <p>&copy; {new Date().getFullYear()} Sayun Medical Corporation. {locale === "ar" ? "جميع الحقوق محفوظة." : "All rights reserved."}</p>
-          <p>{locale === "ar" ? "تصميم وتطوير" : "Designed & Built"} <span className="text-cyan-500/50 mx-1">&hearts;</span></p>
+          <p>{locale === "ar" ? "تصميم وتطوير" : "Designed & Built"} <span className="text-primary-light/50 mx-1">&hearts;</span></p>
         </div>
       </div>
     </footer>
